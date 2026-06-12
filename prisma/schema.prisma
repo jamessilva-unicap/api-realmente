@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Usuario {
+  id       Int     @id @default(autoincrement())
+  nome     String
+  email    String  @unique
+  senha    String
+  condicao String?
+
+  relatos Relato[]
+  apoios  Apoio[]
+
+  createdAt DateTime @default(now())
+}
+
+model Conexao {
+  id Int @id @default(autoincrement())
+
+  usuario1Id Int
+  usuario2Id Int
+
+  status String
+
+  createdAt DateTime @default(now())
+}
+
+model Comunidade {
+  id Int @id @default(autoincrement())
+
+  nome      String
+  descricao String?
+
+  createdAt DateTime @default(now())
+}
+
+model Relato {
+  id       Int     @id @default(autoincrement())
+  conteudo String  @db.Text
+  anonimo  Boolean @default(false)
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  apoios Apoio[]
+
+  createdAt DateTime @default(now())
+}
+
+model Apoio {
+  id Int @id @default(autoincrement())
+
+  relatoId Int
+  relato   Relato @relation(fields: [relatoId], references: [id])
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id])
+
+  createdAt DateTime @default(now())
+}
