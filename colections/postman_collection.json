@@ -5,6 +5,18 @@
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "version": "1.0.0"
   },
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test('Status is 2xx', function () { pm.expect(pm.response.code).to.be.within(200, 299); });",
+          "pm.test('Response has success boolean', function () { try { var json = pm.response.json(); pm.expect(typeof json.success).to.eql('boolean'); } catch (e) { pm.expect.fail('Response not JSON'); } });"
+        ]
+      }
+    }
+  ],
   "variable": [
     {
       "key": "baseUrl",
