@@ -1,30 +1,28 @@
-let usuarios = [];
-let idCounter = 1;
+import prisma from '../prisma-client.js';
 
 export const usuarioRepository = {
-    create: (dados) => {
-        const novoUsuario = { id: idCounter++, ...dados };
-        usuarios.push(novoUsuario);
-        return novoUsuario;
+    create: async (dados) => {
+        return await prisma.usuario.create({ data: dados });
     },
-    getAll: () => {
-        return usuarios;
+    getAll: async () => {
+        return await prisma.usuario.findMany();
     },
-    getById: (id) => {
-        return usuarios.find(u => u.id === Number.parseInt(id));
+    getById: async (id) => {
+        return await prisma.usuario.findUnique({ where: { id: Number.parseInt(id) } });
     },
-    update: (id, dadosAtualizados) => {
-        const index = usuarios.findIndex(u => u.id === Number.parseInt(id));
-        if (index === -1) return null;
-        
-        usuarios[index] = { ...usuarios[index], ...dadosAtualizados };
-        return usuarios[index];
+    update: async (id, dadosAtualizados) => {
+        try {
+            return await prisma.usuario.update({ where: { id: Number.parseInt(id) }, data: dadosAtualizados });
+        } catch (err) {
+            return null;
+        }
     },
-    delete: (id) => {
-        const index = usuarios.findIndex(u => u.id === Number.parseInt(id));
-        if (index === -1) return false;
-        
-        usuarios.splice(index, 1);
-        return true;
+    delete: async (id) => {
+        try {
+            await prisma.usuario.delete({ where: { id: Number.parseInt(id) } });
+            return true;
+        } catch (err) {
+            return false;
+        }
     }
 };

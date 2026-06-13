@@ -2,27 +2,27 @@
 import { usuarioRepository } from '../repositories/user.repository.js';
 
 export const usuarioService = {
-    createUser: (dados) => {
-        if (!dados.nome || !dados.idade) {
-            throw new Error("Nome e idade são obrigatórios para o RealMente.");
+    createUser: async (dados) => {
+        if (!dados.nome) {
+            throw new Error("Nome é obrigatório para o RealMente.");
         }
-        return usuarioRepository.create(dados);
+        return await usuarioRepository.create(dados);
     },
-    getAllUsers: () => {
-        return usuarioRepository.getAll();
+    getAllUsers: async () => {
+        return await usuarioRepository.getAll();
     },
-    getUserById: (id) => {
-        const usuario = usuarioRepository.getById(id);
+    getUserById: async (id) => {
+        const usuario = await usuarioRepository.getById(id);
         if (!usuario) throw new Error("Usuário não encontrado.");
         return usuario;
     },
-    updateUser: (id, dados) => {
-        const usuarioAtualizado = usuarioRepository.update(id, dados);
+    updateUser: async (id, dados) => {
+        const usuarioAtualizado = await usuarioRepository.update(id, dados);
         if (!usuarioAtualizado) throw new Error("Usuário não encontrado para atualização.");
         return usuarioAtualizado;
     },
-    deleteUser: (id) => {
-        const deletado = usuarioRepository.delete(id);
+    deleteUser: async (id) => {
+        const deletado = await usuarioRepository.delete(id);
         if (!deletado) throw new Error("Usuário não encontrado para deleção.");
         return deletado;
     }

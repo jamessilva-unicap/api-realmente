@@ -1,44 +1,43 @@
-import { usuarioService } from '../services/user.service.js';
+import { relatoService } from '../services/relato.service.js';
 import { successResponse, errorResponse } from '../utils/response-handler.js';
 
-export const usuarioController = {
+export const relatoController = {
     create: async (req, res) => {
         try {
-            const usuario = await usuarioService.createUser(req.body);
-            return successResponse(res, 201, usuario);
+            const r = await relatoService.createRelato(req.body);
+            return successResponse(res, 201, r);
         } catch (error) {
             return errorResponse(res, 400, error.message);
         }
     },
-
     getAll: async (req, res) => {
         try {
-            const usuarios = await usuarioService.getAllUsers();
-            return successResponse(res, 200, usuarios);
+            const lista = await relatoService.getAllRelatos();
+            return successResponse(res, 200, lista);
         } catch (error) {
             return errorResponse(res, 500, error.message);
         }
     },
     getById: async (req, res) => {
         try {
-            const usuario = await usuarioService.getUserById(req.params.id);
-            return successResponse(res, 200, usuario);
+            const r = await relatoService.getRelatoById(req.params.id);
+            return successResponse(res, 200, r);
         } catch (error) {
             return errorResponse(res, 404, error.message);
         }
     },
     update: async (req, res) => {
         try {
-            const usuario = await usuarioService.updateUser(req.params.id, req.body);
-            return successResponse(res, 200, usuario);
+            const r = await relatoService.updateRelato(req.params.id, req.body);
+            return successResponse(res, 200, r);
         } catch (error) {
             return errorResponse(res, 404, error.message);
         }
     },
     delete: async (req, res) => {
         try {
-            await usuarioService.deleteUser(req.params.id);
-            return successResponse(res, 200, null, "Usuário deletado com sucesso.");
+            await relatoService.deleteRelato(req.params.id);
+            return successResponse(res, 200, null, 'Relato deletado com sucesso.');
         } catch (error) {
             return errorResponse(res, 404, error.message);
         }
