@@ -1,0 +1,532 @@
+{
+  "info": {
+    "name": "RealMente API",
+    "description": "Coleção de requisições para testar a API RealMente com Postman e Newman.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Usuários",
+      "item": [
+        {
+          "name": "Criar usuário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao.silva@example.com\",\n  \"senha\": \"senha123\",\n  \"condicao\": \"Ativo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar usuários",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar usuário por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar usuário",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Souza\",\n  \"email\": \"joao.souza@example.com\",\n  \"senha\": \"novaSenha123\",\n  \"condicao\": \"Ativo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar usuário",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Conexões",
+      "item": [
+        {
+          "name": "Criar conexão",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario1Id\": 1,\n  \"usuario2Id\": 2,\n  \"status\": \"pendente\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/conexoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "conexoes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar conexões",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/conexoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "conexoes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar conexão por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/conexoes/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "conexoes",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar conexão",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuario1Id\": 1,\n  \"usuario2Id\": 2,\n  \"status\": \"aceito\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/conexoes/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "conexoes",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar conexão",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/conexoes/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "conexoes",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comunidades",
+      "item": [
+        {
+          "name": "Criar comunidade",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Comunidade de Apoio\",\n  \"descricao\": \"Espaço para acolhimento e troca de experiências.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comunidades",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comunidades"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar comunidades",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/comunidades",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comunidades"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar comunidade por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/comunidades/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comunidades",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar comunidade",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Comunidade de Apoio Atualizada\",\n  \"descricao\": \"Descrição atualizada da comunidade.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/comunidades/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comunidades",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar comunidade",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/comunidades/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comunidades",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relatos",
+      "item": [
+        {
+          "name": "Criar relato",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conteudo\": \"Estou muito triste hoje e procurando apoio.\",\n  \"anonimo\": false,\n  \"usuarioId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/relatos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "relatos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar relatos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/relatos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "relatos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar relato por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/relatos/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "relatos",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar relato",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"conteudo\": \"Atualização do relato de apoio.\",\n  \"anonimo\": true,\n  \"usuarioId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/relatos/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "relatos",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar relato",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/relatos/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "relatos",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Apoios",
+      "item": [
+        {
+          "name": "Criar apoio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"relatoId\": 1,\n  \"usuarioId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/apoios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apoios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar apoios",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/apoios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apoios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar apoio por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/apoios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apoios",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar apoio",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"relatoId\": 1,\n  \"usuarioId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/apoios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apoios",
+                ":id"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deletar apoio",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/apoios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apoios",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
